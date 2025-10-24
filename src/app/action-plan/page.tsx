@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { UserProgress } from '@/types';
 import { getCategoryTitle, getCategoryDescription } from '@/utils/actionPlanModules';
+import ActionTaskDetail from '@/components/ActionTaskDetail';
 
 export default function ActionPlanPage() {
   const router = useRouter();
@@ -126,15 +127,7 @@ export default function ActionPlanPage() {
 
                       <div className="space-y-3">
                         {module.tasks.map((task) => (
-                          <div
-                            key={task.id}
-                            className="flex gap-2 sm:gap-3 p-3 sm:p-4 bg-white rounded-lg border"
-                          >
-                            <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">
-                              {task.category.replace('할 일 ', '')}
-                            </div>
-                            <p className="text-xs sm:text-sm text-gray-700 flex-1">{task.text}</p>
-                          </div>
+                          <ActionTaskDetail key={task.id} task={task} />
                         ))}
                       </div>
                     </div>

@@ -46,6 +46,10 @@ export interface ActionTask {
   id: string;
   text: string;
   category: string; // e.g., "1.1", "2.1", etc.
+  why: string; // 왜 해야 하나요? (효용성)
+  howTo: string[]; // 어떻게 하나요? (단계별 가이드)
+  aiPrompt?: string; // ChatGPT 활용 프롬프트
+  example?: string; // 예시
 }
 
 export interface ActionPlan {
