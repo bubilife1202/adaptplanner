@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { surveyQuestions } from '@/utils/surveyQuestions';
 import { analyzeAnswers } from '@/utils/analysisEngine';
 import { generateActionPlan } from '@/utils/actionPlanModules';
@@ -70,21 +71,25 @@ export default function SurveyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 헤더 */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="container mx-auto px-6 py-4">
-          <h1 className="text-2xl font-bold text-gray-900">AI 생존 지수 진단</h1>
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <Link href="/" className="inline-block">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              AI 생존 지수 진단
+            </h1>
+          </Link>
         </div>
       </header>
 
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-12">
         <div className="max-w-3xl mx-auto">
           {/* 진행률 */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <div className="flex justify-between items-center mb-3">
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-xs sm:text-sm font-medium text-gray-600">
                 질문 {currentQuestion + 1} / {surveyQuestions.length}
               </span>
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-xs sm:text-sm font-medium text-gray-600">
                 {Math.round(progressPercent)}% 완료
               </span>
             </div>
@@ -97,10 +102,10 @@ export default function SurveyPage() {
           </div>
 
           {/* 질문 */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">{question.text}</h2>
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-8 mb-6">
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">{question.text}</h2>
 
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {[
                 { value: 1, label: '전혀 그렇지 않다' },
                 { value: 2, label: '그렇지 않다' },
@@ -111,11 +116,11 @@ export default function SurveyPage() {
                 <button
                   key={value}
                   onClick={() => handleAnswer(value)}
-                  className="w-full p-4 text-left border-2 border-gray-200 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors"
+                  className="w-full p-3 sm:p-4 text-left border-2 border-gray-200 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors active:scale-95"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-900">{label}</span>
-                    <span className="text-sm text-gray-500">{value}점</span>
+                    <span className="text-sm sm:text-base font-medium text-gray-900">{label}</span>
+                    <span className="text-xs sm:text-sm text-gray-500">{value}점</span>
                   </div>
                 </button>
               ))}
@@ -127,13 +132,13 @@ export default function SurveyPage() {
             <button
               onClick={handlePrevious}
               disabled={currentQuestion === 0}
-              className="px-6 py-3 text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed"
+              className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed"
             >
               ← 이전
             </button>
             <button
               onClick={() => router.push('/')}
-              className="px-6 py-3 text-gray-600 hover:text-gray-900"
+              className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base text-gray-600 hover:text-gray-900"
             >
               처음으로
             </button>

@@ -53,25 +53,36 @@ export default function ResultsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
+      {/* 상단 헤더 */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <Link href="/" className="inline-block">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              AI 생존 지수
+            </h1>
+          </Link>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-6 sm:py-8">
         <div className="max-w-5xl mx-auto">
-          {/* 헤더 */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">진단 결과</h1>
-            <p className="text-gray-600">당신의 AI 생존 지수를 확인하세요</p>
+          {/* 페이지 제목 */}
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">진단 결과</h2>
+            <p className="text-sm sm:text-base text-gray-600">당신의 AI 생존 지수를 확인하세요</p>
           </div>
 
           {/* AI 대체 지수 카드 */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
+          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-6">
             <div className="text-center mb-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">AI 대체 지수</h2>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">AI 대체 지수</h3>
               <div className="relative inline-block">
-                <div className="text-7xl font-bold text-gray-900">
+                <div className="text-5xl sm:text-7xl font-bold text-gray-900">
                   {analysisResult.aiReplaceabilityIndex}
-                  <span className="text-3xl text-gray-500">%</span>
+                  <span className="text-2xl sm:text-3xl text-gray-500">%</span>
                 </div>
                 <div
-                  className={`mt-4 px-6 py-2 rounded-full border-2 font-bold ${riskColors[riskLevel]}`}
+                  className={`mt-4 px-4 sm:px-6 py-2 rounded-full border-2 font-bold text-sm sm:text-base ${riskColors[riskLevel]}`}
                 >
                   {riskLabels[riskLevel]}
                 </div>
@@ -79,17 +90,19 @@ export default function ResultsPage() {
             </div>
 
             {/* 요약 코멘트 */}
-            <div className="p-6 bg-blue-50 rounded-lg">
-              <p className="text-gray-800 leading-relaxed">{analysisResult.summary}</p>
+            <div className="p-4 sm:p-6 bg-blue-50 rounded-lg">
+              <p className="text-sm sm:text-base text-gray-800 leading-relaxed">{analysisResult.summary}</p>
             </div>
           </div>
 
           {/* 방어 지도 (레이더 차트) */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-6">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-6 text-center">
               나의 방어 지도
-            </h2>
-            <RadarChart dimensions={analysisResult.dimensions} />
+            </h3>
+            <div className="max-w-md mx-auto">
+              <RadarChart dimensions={analysisResult.dimensions} />
+            </div>
           </div>
 
           {/* 위험/안전 영역 분석 */}
@@ -144,12 +157,18 @@ export default function ResultsPage() {
           </div>
 
           {/* CTA */}
-          <div className="text-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/action-plan"
-              className="inline-block px-12 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
+              className="w-full sm:w-auto text-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-lg sm:text-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
             >
               맞춤형 액션 플랜 보기 →
+            </Link>
+            <Link
+              href="/"
+              className="w-full sm:w-auto text-center px-8 sm:px-12 py-4 sm:py-5 bg-white text-gray-700 border-2 border-gray-300 rounded-lg text-lg sm:text-xl font-bold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
+            >
+              ← 처음으로
             </Link>
           </div>
         </div>

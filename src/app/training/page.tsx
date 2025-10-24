@@ -93,12 +93,23 @@ export default function TrainingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
+      {/* 상단 헤더 */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <Link href="/" className="inline-block">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              AI 생존 지수
+            </h1>
+          </Link>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-6 sm:py-8">
         <div className="max-w-5xl mx-auto">
-          {/* 헤더 */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">생존 노트</h1>
-            <p className="text-gray-600">과제를 실천하고 당신의 성장을 기록하세요</p>
+          {/* 페이지 제목 */}
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">생존 노트</h2>
+            <p className="text-sm sm:text-base text-gray-600">과제 실천하고 성장 기록하기</p>
           </div>
 
           {/* 진행률 카드 */}
@@ -231,18 +242,18 @@ export default function TrainingPage() {
           </div>
 
           {/* 네비게이션 */}
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/action-plan"
-              className="px-8 py-4 bg-white text-gray-700 rounded-lg text-lg font-bold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
+              className="w-full sm:w-auto text-center px-6 sm:px-8 py-4 bg-white text-gray-700 border-2 border-gray-300 rounded-lg text-base sm:text-lg font-bold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
             >
-              ← 액션 플랜 보기
+              ← 액션 플랜
             </Link>
             <Link
               href="/"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-lg font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
+              className="w-full sm:w-auto text-center px-6 sm:px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-base sm:text-lg font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
             >
-              처음으로
+              🏠 처음으로
             </Link>
           </div>
         </div>
