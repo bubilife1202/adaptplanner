@@ -31,6 +31,11 @@ export default function SurveyPage() {
     ];
     setAnswers(newAnswers);
 
+    // 포커스 제거 (모바일에서 테두리 남는 문제 해결)
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
     if (currentQuestion < surveyQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
