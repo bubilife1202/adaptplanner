@@ -50,7 +50,10 @@ export default function SurveyPage() {
         notes: [],
       });
 
-      router.push('/results');
+      // localStorage에 저장될 시간을 주기 위해 약간의 딜레이 후 이동
+      setTimeout(() => {
+        router.push('/results');
+      }, 100);
     }
   };
 
