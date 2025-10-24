@@ -5,46 +5,46 @@ export const actionPlanModules: ActionPlanModule[] = [
   // === 위험 제거 (Risk) 모듈 ===
   {
     id: 'risk-pattern-high',
-    title: '반복 업무 자동화',
-    description: '패턴성이 높아 AI 대체 위험이 있습니다',
+    title: '반복 업무 줄이기',
+    description: '똑같은 일 반복하면 AI가 대신해요',
     category: 'risk',
     relatedDimension: 'pattern',
     condition: (dimensions) => dimensions.pattern >= 3.5,
     tasks: [
       {
         id: 'risk-pattern-high-1',
-        category: '1.1',
-        text: '당신의 업무 중 매주 반복되는 작업 5가지를 목록화하세요',
+        category: '할 일 1',
+        text: '매주 반복하는 일 5개 적기 (예: 보고서 쓰기, 엑셀 정리하기)',
       },
       {
         id: 'risk-pattern-high-2',
-        category: '1.2',
-        text: '그 중 1개를 AI 도구(ChatGPT, 자동화 툴)로 처리하고 주 1시간을 절약하는 실험을 하세요',
+        category: '할 일 2',
+        text: 'ChatGPT로 그 중 1개 대신 해보기 (시간 얼마나 절약되는지 체크)',
       },
       {
         id: 'risk-pattern-high-3',
-        category: '1.3',
-        text: 'AI가 할 수 없는 "판단"이 필요한 업무를 최소 3가지 찾아 기록하세요',
+        category: '할 일 3',
+        text: 'AI가 못하는 일 찾기 (사람 설득, 협상, 눈치 보기 같은 거)',
       },
     ],
   },
   {
     id: 'risk-data-high',
-    title: '데이터 해석력 강화',
-    description: '데이터 의존도가 높아 AI가 대체하기 쉬운 영역입니다',
+    title: '숫자만 보지 말기',
+    description: '데이터만 다루면 AI가 더 잘해요',
     category: 'risk',
     relatedDimension: 'dataReliance',
     condition: (dimensions) => dimensions.dataReliance >= 3.5,
     tasks: [
       {
         id: 'risk-data-high-1',
-        category: '1.4',
-        text: 'AI가 생성한 데이터 분석 결과에 "인간적 맥락"을 추가하는 연습을 하세요 (예: 숫자 뒤의 사람들의 이야기)',
+        category: '할 일 1',
+        text: '데이터 볼 때 "이게 실제로 무슨 의미인지" 한 줄 쓰기 (예: 매출↑ = 사람들이 좋아한다)',
       },
       {
         id: 'risk-data-high-2',
-        category: '1.5',
-        text: '데이터로는 설명할 수 없지만 중요한 직관적 판단 사례 3가지를 기록하세요',
+        category: '할 일 2',
+        text: '숫자로 안 나오는 중요한 것 적기 (예: 고객 표정, 직원 사기, 회의 분위기)',
       },
     ],
   },
@@ -52,91 +52,91 @@ export const actionPlanModules: ActionPlanModule[] = [
   // === 약점 보완 (Weakness) 모듈 ===
   {
     id: 'weak-creativity-low',
-    title: '창의력 훈련',
-    description: '창의성이 부족하여 보완이 필요합니다',
+    title: '새로운 생각 연습',
+    description: '새로운 아이디어 내는 게 어려우시죠?',
     category: 'weakness',
     relatedDimension: 'creativity',
     condition: (dimensions) => dimensions.creativity <= 2.5,
     tasks: [
       {
         id: 'weak-creativity-low-1',
-        category: '2.1',
-        text: '매일 5분, 전혀 다른 단어 2개를 억지로 연결하는 훈련을 하세요 (예: "우산 + 피자 = ?")',
+        category: '할 일 1',
+        text: '하루 5분 "말도 안 되는 조합" 생각하기 (예: 우산+피자 = 비 오는 날 배달 세트?)',
       },
       {
         id: 'weak-creativity-low-2',
-        category: '2.2',
-        text: 'AI가 만든 결과물을 볼 때, "더 엉뚱하게" 바꿀 수 있는 부분 1가지를 찾아보세요',
+        category: '할 일 2',
+        text: 'AI가 만든 거 보고 "이렇게 바꾸면 재밌겠다" 1개 생각해보기',
       },
       {
         id: 'weak-creativity-low-3',
-        category: '2.3',
-        text: '일주일에 1번, 당신의 업무 프로세스를 완전히 다르게 재설계해보는 사고 실험을 하세요',
+        category: '할 일 3',
+        text: '일주일에 1번 "만약에 이렇게 하면?" 상상하기 (일하는 방식 완전히 바꿔보기)',
       },
     ],
   },
   {
     id: 'weak-creativity-medium',
-    title: '창의성 강화',
-    description: '창의성을 더욱 발전시켜 경쟁력을 높이세요',
+    title: '아이디어 키우기',
+    description: '더 재미있는 생각 만들어봐요',
     category: 'weakness',
     relatedDimension: 'creativity',
     condition: (dimensions) => dimensions.creativity > 2.5 && dimensions.creativity < 3.5,
     tasks: [
       {
         id: 'weak-creativity-medium-1',
-        category: '2.1',
-        text: 'AI의 아이디어를 "조합"하여 새로운 제3의 아이디어를 만드는 연습을 하세요',
+        category: '할 일 1',
+        text: 'AI 아이디어 2개 섞어서 새로운 아이디어 만들기 (A+B=C)',
       },
       {
         id: 'weak-creativity-medium-2',
-        category: '2.2',
-        text: '다른 산업/분야의 혁신 사례를 당신의 업무에 적용하는 방법을 주 1회 탐구하세요',
+        category: '할 일 2',
+        text: '다른 업종 성공 사례 보고 내 일에 적용해보기 (예: 카페 → 우리 회사)',
       },
     ],
   },
   {
     id: 'weak-empathy-low',
-    title: '공감 능력 개발',
-    description: '공감력이 부족하여 인간적 강점을 키워야 합니다',
+    title: '사람 마음 읽기',
+    description: '다른 사람 감정 이해하는 게 AI는 못해요',
     category: 'weakness',
     relatedDimension: 'empathy',
     condition: (dimensions) => dimensions.empathy <= 2.5,
     tasks: [
       {
         id: 'weak-empathy-low-1',
-        category: '2.4',
-        text: '매일 업무 중 만난 사람 1명의 감정 상태를 관찰하고 기록하세요',
+        category: '할 일 1',
+        text: '매일 만난 사람 1명 "기분 어때 보였는지" 메모하기',
       },
       {
         id: 'weak-empathy-low-2',
-        category: '2.5',
-        text: 'AI 보고서에 "이 데이터가 실제 사람들에게 의미하는 것"을 추가하는 연습을 하세요',
+        category: '할 일 2',
+        text: '보고서 볼 때 "이게 사람들한테 어떤 영향 줄까?" 한 줄 쓰기',
       },
       {
         id: 'weak-empathy-low-3',
-        category: '2.6',
-        text: '주 1회, 동료와 업무 외 대화를 통해 관계를 깊게 만드는 시간을 가지세요',
+        category: '할 일 3',
+        text: '일주일에 1번 동료랑 일 얘기 말고 다른 대화하기 (커피 마시면서)',
       },
     ],
   },
   {
     id: 'weak-empathy-medium',
-    title: '공감력 확장',
-    description: '공감 능력을 전략적 자산으로 발전시키세요',
+    title: '공감력 키우기',
+    description: '사람 마음 잘 읽는 능력 더 키워요',
     category: 'weakness',
     relatedDimension: 'empathy',
     condition: (dimensions) => dimensions.empathy > 2.5 && dimensions.empathy < 3.5,
     tasks: [
       {
         id: 'weak-empathy-medium-1',
-        category: '2.4',
-        text: '이해관계자의 숨겨진 니즈를 파악하여 AI가 놓친 부분을 찾아내는 연습을 하세요',
+        category: '할 일 1',
+        text: '상대방이 말 안 하는 진짜 원하는 것 찾기 (AI는 이거 못함)',
       },
       {
         id: 'weak-empathy-medium-2',
-        category: '2.5',
-        text: '갈등 상황에서 중재자 역할을 자처하여 경험을 쌓으세요',
+        category: '할 일 2',
+        text: '사람들 싸울 때 중간에서 조율해보기 (경험 쌓기)',
       },
     ],
   },
@@ -144,48 +144,48 @@ export const actionPlanModules: ActionPlanModule[] = [
   // === 전략 수립 (Strategy) 모듈 ===
   {
     id: 'strategy-creativity-high',
-    title: '창의성 레버리지',
-    description: '당신의 창의성을 최대한 활용하세요',
+    title: '아이디어 강점 살리기',
+    description: '새로운 생각 잘하시네요! 이걸 활용하세요',
     category: 'strategy',
     relatedDimension: 'creativity',
     condition: (dimensions) => dimensions.creativity >= 3.5,
     tasks: [
       {
         id: 'strategy-creativity-high-1',
-        category: '3.1',
-        text: 'AI를 "아이디어 생성 도구"로 활용하고, 당신은 "큐레이터"가 되어 최선을 선택하세요',
+        category: '할 일 1',
+        text: 'AI한테 아이디어 100개 만들라고 하고, 내가 제일 좋은 거 고르기',
       },
       {
         id: 'strategy-creativity-high-2',
-        category: '3.2',
-        text: '팀 내에서 "혁신 제안자" 포지션을 구축하고 정기적으로 새 아이디어를 제안하세요',
+        category: '할 일 2',
+        text: '팀에서 "새 아이디어 담당"으로 자리 잡기 (한 달에 1번 새 제안하기)',
       },
     ],
   },
   {
     id: 'strategy-empathy-high',
-    title: '공감력 활용 전략',
-    description: '공감력을 활용해 AI 결과물을 인간화하세요',
+    title: '공감 능력 써먹기',
+    description: '사람 마음 잘 읽으시네요! 이게 무기예요',
     category: 'strategy',
     relatedDimension: 'empathy',
     condition: (dimensions) => dimensions.empathy >= 3.5,
     tasks: [
       {
         id: 'strategy-empathy-high-1',
-        category: '3.3',
-        text: 'AI 리포트에 "인간적인 해석"과 "감정적 맥락"을 덧붙이는 역할을 맡으세요',
+        category: '할 일 1',
+        text: 'AI 보고서에 "사람들 입장에선 이런 느낌" 추가하는 역할 맡기',
       },
       {
         id: 'strategy-empathy-high-2',
-        category: '3.4',
-        text: '고객/이해관계자와의 직접 소통 기회를 늘려 "관계 전문가"로 포지셔닝하세요',
+        category: '할 일 2',
+        text: '고객이랑 직접 대화하는 일 늘리기 (AI는 못하는 거니까)',
       },
     ],
   },
   {
     id: 'strategy-balanced',
-    title: 'AI 협업 전략가',
-    description: '균형잡힌 역량으로 AI와 협업하는 방법을 익히세요',
+    title: 'AI랑 팀 이루기',
+    description: '전반적으로 괜찮아요. AI를 파트너로 쓰세요',
     category: 'strategy',
     relatedDimension: 'pattern',
     condition: (dimensions) =>
@@ -195,33 +195,33 @@ export const actionPlanModules: ActionPlanModule[] = [
     tasks: [
       {
         id: 'strategy-balanced-1',
-        category: '3.5',
-        text: 'AI를 "1차 작업자"로, 자신을 "전략가/검수자"로 역할 분담하는 워크플로를 만드세요',
+        category: '할 일 1',
+        text: 'AI한테 초안 만들라고 하고, 내가 검토하고 고치는 방식 만들기',
       },
       {
         id: 'strategy-balanced-2',
-        category: '3.6',
-        text: 'AI 도구 3개를 마스터하고 팀 내 "AI 활용 가이드" 역할을 자처하세요',
+        category: '할 일 2',
+        text: 'AI 도구 3개 능숙하게 다루기 (팀에서 "AI 잘 쓰는 사람" 되기)',
       },
     ],
   },
   {
     id: 'strategy-automation-learn',
-    title: '자동화 마스터 되기',
-    description: 'AI와 자동화 도구를 익혀 효율성을 극대화하세요',
+    title: 'AI 도구 마스터하기',
+    description: 'AI가 대신 일하게 만드는 법 배우세요',
     category: 'strategy',
     relatedDimension: 'pattern',
     condition: (dimensions) => dimensions.pattern >= 3.5 || dimensions.dataReliance >= 3.5,
     tasks: [
       {
         id: 'strategy-automation-learn-1',
-        category: '3.7',
-        text: '매달 1개의 새로운 AI/자동화 도구를 학습하고 업무에 적용하세요',
+        category: '할 일 1',
+        text: '한 달에 AI 도구 1개씩 배우기 (ChatGPT, 자동화 툴 등)',
       },
       {
         id: 'strategy-automation-learn-2',
-        category: '3.8',
-        text: '자동화된 작업의 "품질 검수자" 역할로 전문성을 키우세요',
+        category: '할 일 2',
+        text: 'AI가 만든 결과 확인하는 전문가 되기 (틀린 거 찾아내기)',
       },
     ],
   },
@@ -250,18 +250,18 @@ export function generateActionPlan(
 
 export function getCategoryTitle(category: 'risk' | 'weakness' | 'strategy'): string {
   const titles = {
-    risk: '1단계: 위험 제거 (Risk)',
-    weakness: '2단계: 약점 보완 (Weakness)',
-    strategy: '3단계: 전략 수립 (Strategy)',
+    risk: '🛡️ 1단계: 위험한 것부터 없애기',
+    weakness: '💪 2단계: 부족한 거 채우기',
+    strategy: '🎯 3단계: 강점 활용하기',
   };
   return titles[category];
 }
 
 export function getCategoryDescription(category: 'risk' | 'weakness' | 'strategy'): string {
   const descriptions = {
-    risk: 'AI에게 빼앗길 수 있는 업무를 최소화하고 방어 체계를 구축하세요',
-    weakness: '부족한 역량을 보완하여 AI가 대체할 수 없는 영역을 넓히세요',
-    strategy: '당신의 강점을 활용하여 AI와 협업하는 전략을 수립하세요',
+    risk: 'AI한테 뺏길 수 있는 일 줄이고, 안전하게 지키기',
+    weakness: '약한 부분 키워서 AI가 못 따라오게 만들기',
+    strategy: '내가 잘하는 걸 더 잘 써먹기 (AI랑 같이 일하기)',
   };
   return descriptions[category];
 }
