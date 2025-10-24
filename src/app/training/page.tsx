@@ -10,7 +10,7 @@ import NoteEditor from '@/components/NoteEditor';
 
 export default function TrainingPage() {
   const router = useRouter();
-  const [progress, setProgress] = useLocalStorage<UserProgress>('userProgress', {
+  const [progress, setProgress, isLoading] = useLocalStorage<UserProgress>('userProgress', {
     surveyCompleted: false,
     surveyAnswers: [],
     checklist: [],
@@ -20,12 +20,12 @@ export default function TrainingPage() {
   const [filter, setFilter] = useState<'all' | 'pending' | 'completed'>('all');
 
   useEffect(() => {
-    if (!progress.surveyCompleted) {
+    if (!isLoading && !progress.surveyCompleted) {
       router.push('/');
     }
-  }, [progress.surveyCompleted, router]);
+  }, [isLoading, progress.surveyCompleted, router]);
 
-  if (!progress.actionPlan) {
+  if (isLoading || !progress.actionPlan) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">

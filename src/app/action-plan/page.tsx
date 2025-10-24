@@ -9,7 +9,7 @@ import { getCategoryTitle, getCategoryDescription } from '@/utils/actionPlanModu
 
 export default function ActionPlanPage() {
   const router = useRouter();
-  const [progress] = useLocalStorage<UserProgress>('userProgress', {
+  const [progress, , isLoading] = useLocalStorage<UserProgress>('userProgress', {
     surveyCompleted: false,
     surveyAnswers: [],
     checklist: [],
@@ -17,12 +17,12 @@ export default function ActionPlanPage() {
   });
 
   useEffect(() => {
-    if (!progress.surveyCompleted) {
+    if (!isLoading && !progress.surveyCompleted) {
       router.push('/');
     }
-  }, [progress.surveyCompleted, router]);
+  }, [isLoading, progress.surveyCompleted, router]);
 
-  if (!progress.actionPlan) {
+  if (isLoading || !progress.actionPlan) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">

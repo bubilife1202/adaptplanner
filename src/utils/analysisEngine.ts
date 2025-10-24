@@ -36,7 +36,7 @@ export function analyzeAnswers(answers: SurveyAnswer[]): AnalysisResult {
   // 0-100 스케일로 변환
   // 위험 점수가 높고 안전 점수가 낮을수록 대체 지수 증가
   const aiReplaceabilityIndex = Math.round(
-    ((riskScore / 5) * 50 + ((5 - safetyScore) / 5) * 50) * 100
+    (riskScore / 5) * 50 + ((5 - safetyScore) / 5) * 50
   );
 
   // 위험 영역과 안전 영역 분류

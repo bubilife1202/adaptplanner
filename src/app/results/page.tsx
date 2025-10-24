@@ -11,7 +11,7 @@ import { dimensionInfo } from '@/utils/surveyQuestions';
 
 export default function ResultsPage() {
   const router = useRouter();
-  const [progress] = useLocalStorage<UserProgress>('userProgress', {
+  const [progress, , isLoading] = useLocalStorage<UserProgress>('userProgress', {
     surveyCompleted: false,
     surveyAnswers: [],
     checklist: [],
@@ -19,12 +19,14 @@ export default function ResultsPage() {
   });
 
   useEffect(() => {
-    if (!progress.surveyCompleted) {
+    // localStorage 로딩이 완료되고, 설문이 완료되지 않았을 때만 리다이렉트
+    if (!isLoading && !progress.surveyCompleted) {
       router.push('/');
     }
-  }, [progress.surveyCompleted, router]);
+  }, [isLoading, progress.surveyCompleted, router]);
 
-  if (!progress.analysisResult) {
+  // 로딩 중이거나 결과가 없으면 로딩 화면 표시
+  if (isLoading || !progress.analysisResult) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
