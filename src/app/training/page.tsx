@@ -16,22 +16,23 @@ export default function TrainingPage() {
     checklist: [],
     notes: [],
   });
-  const [mounted, setMounted] = useState(false);
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
   const [filter, setFilter] = useState<'all' | 'pending' | 'completed'>('all');
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted && !progress.surveyCompleted) {
+    if (!progress.surveyCompleted) {
       router.push('/');
     }
-  }, [mounted, progress.surveyCompleted, router]);
+  }, [progress.surveyCompleted, router]);
 
-  if (!mounted || !progress.actionPlan) {
-    return null;
+  if (!progress.actionPlan) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">데이터를 불러오는 중...</p>
+        </div>
+      </div>
+    );
   }
 
   const { actionPlan, checklist, notes } = progress;

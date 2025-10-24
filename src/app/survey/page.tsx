@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { surveyQuestions } from '@/utils/surveyQuestions';
 import { analyzeAnswers } from '@/utils/analysisEngine';
@@ -19,11 +19,6 @@ export default function SurveyPage() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<SurveyAnswer[]>([]);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleAnswer = (value: number) => {
     const newAnswers = [
@@ -67,10 +62,6 @@ export default function SurveyPage() {
       setAnswers(answers.slice(0, -1));
     }
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   const question = surveyQuestions[currentQuestion];
   const progressPercent = ((currentQuestion + 1) / surveyQuestions.length) * 100;

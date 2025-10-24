@@ -2,8 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: '/adaptplanner',
-  assetPrefix: '/adaptplanner/',
   images: {
     unoptimized: true,
   },

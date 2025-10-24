@@ -1,7 +1,7 @@
 {
   "name": "adaptplanner",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.2.0",
+  "description": "AI Survival Index - Personalized Strategy Planner",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",

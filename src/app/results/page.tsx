@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
@@ -17,20 +17,21 @@ export default function ResultsPage() {
     checklist: [],
     notes: [],
   });
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted && !progress.surveyCompleted) {
+    if (!progress.surveyCompleted) {
       router.push('/');
     }
-  }, [mounted, progress.surveyCompleted, router]);
+  }, [progress.surveyCompleted, router]);
 
-  if (!mounted || !progress.analysisResult) {
-    return null;
+  if (!progress.analysisResult) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">진단 결과를 불러오는 중...</p>
+        </div>
+      </div>
+    );
   }
 
   const { analysisResult } = progress;
