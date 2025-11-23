@@ -20,6 +20,7 @@ export default function SurveyPage() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<SurveyAnswer[]>([]);
+  const [showInsight, setShowInsight] = useState(false);
 
   const handleAnswer = (value: number) => {
     const newAnswers = [
@@ -37,7 +38,12 @@ export default function SurveyPage() {
     }
 
     if (currentQuestion < surveyQuestions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      // 10번째, 20번째 질문 후에 인사이트 표시
+      if (currentQuestion + 1 === 10 || currentQuestion + 1 === 20) {
+        setShowInsight(true);
+      } else {
+        setCurrentQuestion(currentQuestion + 1);
+      }
     } else {
       const analysisResult = analyzeAnswers(newAnswers);
       const actionPlan = generateActionPlan(analysisResult.dimensions);
@@ -72,6 +78,77 @@ export default function SurveyPage() {
 
   const question = surveyQuestions[currentQuestion];
   const progressPercent = ((currentQuestion + 1) / surveyQuestions.length) * 100;
+
+  const handleContinueFromInsight = () => {
+    setShowInsight(false);
+    setCurrentQuestion(currentQuestion + 1);
+  };
+
+  // 인사이트 렌더링 (10번째, 20번째 질문 후)
+  if (showInsight) {
+    const insightContent = currentQuestion + 1 === 10 ? {
+      title: '💡 중간 인사이트',
+      message: '지금까지 답변 분석 결과:\n반복 업무 비중이 높으시네요.',
+      stat: '📌 알고 계셨나요?',
+      statDetail: '반복 업무 80% 이상인 직군의 AI 대체율이 평균 2.3배 높습니다.',
+      encouragement: '하지만 걱정 마세요. 이미 500명이 이 진단으로 구체적 대응 전략을 세웠습니다.',
+    } : {
+      title: '💡 거의 다 왔어요!',
+      message: '창의성 점수가 평균보다 낮게 나오고 있어요.',
+      stat: '📌 희소식',
+      statDetail: '창의성은 훈련으로 키울 수 있습니다.',
+      encouragement: '결과 페이지에서 "창의성 키우는 법" 상세 가이드를 드릴게요. 마지막 10문항만 더!',
+    };
+
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="max-w-2xl w-full bg-white rounded-2xl shadow-2xl p-6 sm:p-10 border-2 border-blue-200">
+          <div className="text-center mb-6">
+            <div className="text-5xl mb-4">💡</div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              {insightContent.title}
+            </h2>
+            <div className="w-full h-2 bg-gray-200 rounded-full mb-6">
+              <div
+                className="h-full bg-blue-600 transition-all duration-300"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-6 mb-8">
+            <div className="p-5 bg-blue-50 rounded-xl border-2 border-blue-200">
+              <p className="text-lg text-gray-800 font-semibold mb-3 whitespace-pre-line">
+                {insightContent.message}
+              </p>
+            </div>
+
+            <div className="p-5 bg-purple-50 rounded-xl border-2 border-purple-200">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                {insightContent.stat}
+              </h3>
+              <p className="text-gray-700">
+                {insightContent.statDetail}
+              </p>
+            </div>
+
+            <div className="p-5 bg-green-50 rounded-xl border-2 border-green-200">
+              <p className="text-gray-700">
+                {insightContent.encouragement}
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={handleContinueFromInsight}
+            className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-lg font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
+          >
+            계속하기 →
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

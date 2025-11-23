@@ -47,18 +47,31 @@ export default function ActionTaskDetail({ task }: ActionTaskDetailProps) {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-lg sm:text-xl">📝</span>
-              <h5 className="text-sm sm:text-base font-bold text-gray-900">어떻게 하나요?</h5>
+              <h5 className="text-sm sm:text-base font-bold text-gray-900">단계별 따라하기</h5>
             </div>
-            <ol className="space-y-2">
-              {task.howTo.map((step, index) => (
-                <li key={index} className="flex gap-3 text-xs sm:text-sm text-gray-700">
-                  <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xs">
-                    {index + 1}
-                  </span>
-                  <span className="flex-1">{step}</span>
-                </li>
-              ))}
-            </ol>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border-2 border-blue-200">
+              <ol className="space-y-3">
+                {task.howTo.map((step, index) => (
+                  <li key={index} className="flex gap-3">
+                    <div className="flex-shrink-0">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-sm shadow-md">
+                        {index + 1}
+                      </div>
+                    </div>
+                    <div className="flex-1 pt-1">
+                      <p className="text-xs sm:text-sm text-gray-800 font-medium leading-relaxed">
+                        {step}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-4 pt-4 border-t-2 border-blue-200">
+                <p className="text-xs text-gray-600 text-center">
+                  💡 위 단계를 순서대로 따라하시면 됩니다
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* 예시 */}

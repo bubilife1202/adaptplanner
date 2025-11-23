@@ -135,6 +135,128 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 3가지 프리뷰 질문 */}
+      <section className="py-16 bg-white border-y border-gray-200">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
+              당신은 얼마나 위험할까요?
+            </h3>
+            <p className="text-center text-gray-600 mb-12 text-lg">
+              3가지 질문으로 빠르게 체크해보세요
+            </p>
+
+            <div className="space-y-8">
+              {/* 질문 1 */}
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 sm:p-8 border-2 border-blue-100">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                    Q1
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mt-1">
+                    당신의 업무 중 반복 작업 비율은?
+                  </h4>
+                </div>
+                <div className="ml-14 space-y-2">
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                    <span className="text-gray-700">○ 거의 없음 (10% 미만)</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                    <span className="text-gray-700">○ 보통 (30-50%)</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg border-2 border-red-200">
+                    <span className="text-gray-700">○ 대부분 (70% 이상)</span>
+                    <span className="ml-auto text-red-600 font-bold text-sm">← 위험!</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 질문 2 */}
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 sm:p-8 border-2 border-purple-100">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                    Q2
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mt-1">
+                    최근 1주일간 ChatGPT 사용 횟수는?
+                  </h4>
+                </div>
+                <div className="ml-14 space-y-2">
+                  <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg border-2 border-red-200">
+                    <span className="text-gray-700">○ 0회</span>
+                    <span className="ml-auto text-red-600 font-bold text-sm">← 위험!</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                    <span className="text-gray-700">○ 1-5회</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                    <span className="text-gray-700">○ 매일 사용</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 질문 3 */}
+              <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-6 sm:p-8 border-2 border-orange-100">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                    Q3
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mt-1">
+                    "AI가 내 일 대신할 수 있다" 생각해본 적 있나요?
+                  </h4>
+                </div>
+                <div className="ml-14 space-y-2">
+                  <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg border-2 border-red-200">
+                    <span className="text-gray-700">○ 없음</span>
+                    <span className="ml-auto text-red-600 font-bold text-sm">← 위험!</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                    <span className="text-gray-700">○ 가끔</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                    <span className="text-gray-700">○ 자주</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 결과 안내 */}
+            <div className="mt-10 bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl p-6 sm:p-8 text-white text-center">
+              <div className="text-4xl mb-4">⚠️</div>
+              <h4 className="text-xl sm:text-2xl font-bold mb-3">
+                1개 이상 "위험" 표시 있으신가요?
+              </h4>
+              <p className="text-blue-100 mb-6 text-lg">
+                정밀 진단이 필요합니다. 지금 바로 확인하세요.
+              </p>
+              {!progress.surveyCompleted && (
+                <Link
+                  href="/survey"
+                  className="inline-flex items-center gap-3 px-10 py-4 bg-white text-red-600 rounded-xl text-lg font-bold hover:bg-gray-100 transition-all shadow-xl"
+                >
+                  <span>무료 정밀 진단 시작하기 (3분)</span>
+                  <span className="text-2xl">→</span>
+                </Link>
+              )}
+              <div className="mt-4 flex flex-wrap justify-center gap-6 text-sm text-red-100">
+                <div className="flex items-center gap-2">
+                  <span>✓</span>
+                  <span>500명이 이미 진단 완료</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>✓</span>
+                  <span>평균 AI 대체 확률 67%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>✓</span>
+                  <span>맞춤 생존 전략 즉시 제공</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 인터랙티브 프로세스 카드 */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
